@@ -24,12 +24,30 @@
 
                 // 配列の内容を項目毎に出力
                 // ここにコードを書く
+              for(let i = 0; i < items.length; i++){
+                    console.log("商品番号: " + items[i].id + "商品名: " + items[i].name + "金額: " + items[i].price + "在庫数: " + items[i].stock);
+                }
                 console.log(""); // 空行の出力
             }
 
             // 商品購入の関数
             function buyItem(no) {
                 // ここにコードを書く
+                if (no > items.length) {
+                    console.log("存在しない商品番号です。");
+                } else {
+                    for(let i = 0; i < items.length; i++){
+                        if(items[i].id === no){
+                            if (items[i].stock > 0) {
+                                items[i].stock--;
+                                console.log("商品番号: " + items[i].id + "商品名: " + items[i].name + "を購入します。");
+                            } else {
+                                console.log("商品番号: " + items[i].id + ", 商品名: " + items[i].name + "を購入します。");
+                                console.log("在庫がありません。");
+                            }
+                     }    
+               }
+         }  
                 showItemList(); // 商品一覧の表示関数呼び出し
             }
 
@@ -89,3 +107,4 @@
 商品番号: 7, 商品名: コーヒー, 金額: 170, 在庫数: 8
 商品番号: 8, 商品名: 紅茶, 金額: 140, 在庫数: 6
 -->
+
